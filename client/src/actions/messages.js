@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getMessages = (messages) => {
   return (dispatch) => {
     axios.get('/api/messages')
-      .then( ({ res: messages, headers }) => {
+      .then( ({ data: messages, headers }) => {
         dispatch(
           {
             type: 'GET_MESSAGES',
