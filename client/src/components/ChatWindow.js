@@ -39,7 +39,7 @@ class ChatWindow extends React.Component {
     else
       return (
         <Segment inverted textAlign="center">
-          <Header as="h1">No messages yes</Header>
+          <Header as="h1">No messages yet</Header>
         </Segment>
       )
   }
@@ -55,8 +55,8 @@ class ChatWindow extends React.Component {
         dispatch({ type: 'HEADERS', headers: res.headers })
         this.setState({ newMessage: '' })
       })
-      .catch( err => {
-        dispatch({ type: 'HEADERS', headers: res.headers })
+      .catch( ({ headers }) => {
+        dispatch({ type: 'HEADERS', headers })
         dispatch(setFlash('Error Posting Messages', 'red'))
       });
   }
