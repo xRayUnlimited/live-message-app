@@ -21,7 +21,7 @@ class ChatWindow extends React.Component {
     dispatch(setFlash('Welcome To My Chat App', 'green'))
 
     window.MessageBus.subscribe('/chat_channel', (data) => {
-      dispatch(addMessage(data));
+      dispatch(addMessage(JSON.parse(data)));
     });
   }
 

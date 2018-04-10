@@ -4,8 +4,9 @@ class Api::MessagesController < ApplicationController
   def create
     email = params[:email]
     body = params[:body]
-    if message = Message.create(email: email, body: body)
-      MessageBus.publish "/chat_channel", { email: params[:email], body: params[:body]}
+    message = Message.new(email: email, body: body)
+    if message.save
+      MessageBus.publish "/chat_channel", message.to_json
     else
       render json: { errors: message.errors.full_messages }, status: 422
     end
