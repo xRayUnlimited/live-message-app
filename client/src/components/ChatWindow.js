@@ -9,7 +9,6 @@ class ChatWindow extends React.Component {
   render() {
     return null
   }
-
 }
 
 const mapStateToProps = (state) => {
